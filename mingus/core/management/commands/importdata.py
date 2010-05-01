@@ -49,7 +49,7 @@ class Command(BaseCommand):
     from datetime import datetime
     
     def translate_status(status):
-      return ['draft', 'publish', 'private'].index(status)
+      return [0, 'draft', 'publish', 'private'].index(status)
 
     def translate_comment_status(status):
       return status == 'open'
