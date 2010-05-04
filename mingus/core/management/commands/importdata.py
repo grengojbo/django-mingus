@@ -95,19 +95,23 @@ class Command(BaseCommand):
         allow_comments = translate_comment_status(post.find("{%(wp)s}comment_status" % qnames).text)
         publish = datetime.strptime(post.find("pubDate" % qnames).text, '%a, %d %b %Y %H:%M:%S +0000')
         # use GMT?
-        created = datetime.strptime(post.find("{%(wp)s}post_date" % qnames).text, '%Y-%m-%d %H:%M:%S')
+        created_date = datetime.strptime(post.find("{%(wp)s}post_date" % qnames).text, '%Y-%m-%d %H:%M:%S')
         p, created = Post.objects.get_or_create(title=title, slug=slug, author=author, body=body, tease=tease,
-            status=status, allow_comments=allow_comments, publish=publish, created=created)
+            status=status, allow_comments=allow_comments, publish=publish, created=created_date)
         if created:
           p.save()
 
         cat_tag = post.findall("category")
         if 'Category' not in excludes:
-          for cateogry in filter(lambda x:  x.attrib.get('domain', '') == 'category', cat_tag):
-            slug=category.find('{%(wp)s}category_nicename' % qnames).text
-            c, created = Category.objects.get_or_create(slug=slug)
+          for cat in cat_tag:
+            if cat.attrib.get('domain', '') != 'category':
+              continue
+            cat_name = cat.text
+            slug = cat.attrib.get('nicename', cat_name.lower())
+            c, created = Category.objects.get_or_create(title=cat_name, slug=slug)
             if created:
               c.save()
+            print "  add category %s" % cat_name
             p.categories.add(c)
 
         if 'Tag' not in excludes:
