@@ -112,11 +112,11 @@ body {
     text-align: center;
 }
 
-ul.recent-posts li, .post li
+#right-rail ul li, .post li
 {
     list-style: disc;
-    left-margin: 1.2em;
-    list-style-position: inside;
+    margin-left: 1.5em;
+    list-style-position: outside;
     color: #333940;
 }
 
