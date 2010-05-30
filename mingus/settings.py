@@ -14,7 +14,7 @@ STATICFILES_DIRS = (
 )
 
 SITE_ID = 1
-ROOT_URLCONF = 'mingus.urls'
+ROOT_URLCONF = 'urls'
 TIME_ZONE = 'America/New_York'
 SECRET_KEY = '+bq@o(jph^-*sfj4j%xukecxb0jae9lci&ysy=609hj@(l$47c'
 USE_I18N = False
@@ -29,6 +29,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.doc.XViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'slimmer.middleware.CompressHtmlMiddleware',
@@ -46,6 +47,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "basic.blog.context_processors.blog_settings",
     "navbar.context_processors.navbars",
     "staticfiles.context_processors.static_url",
+    #'django.core.context_processors.csrf',
 )
 
 INSTALLED_APPS = (
