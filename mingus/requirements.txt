@@ -1,4 +1,5 @@
-BeautifulSoup
+BeautifulSoup>=3.0.8
+PIL
 python-dateutil==1.4.1
 django
 django-debug-toolbar==0.8.1
