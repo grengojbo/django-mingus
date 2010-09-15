@@ -84,3 +84,13 @@ REQUEST_IGNORE_PATHS = (
 		r'^tinymce/(.*)',
 )
 
+gettext_noop = lambda s:s
+
+#LANGUAGE_CODE = 'ru-ru'
+#LANGUAGES = (
+#   ('en', gettext_noop('English')),
+#   ('ru', gettext_noop('Russian')),
+#)
+
+#TIME_ZONE = 'Europe/Kiev'
+
