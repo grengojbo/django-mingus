@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
+import sys
 
 PROJECT_ROOT = os.path.dirname(__file__)
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
@@ -16,8 +17,10 @@ STATICFILES_DIRS = (
 SITE_ID = 1
 ROOT_URLCONF = 'mingus.urls'
 TIME_ZONE = 'America/New_York'
+LANGUAGE_CODE = 'en'
 SECRET_KEY = '+bq@o(jph^-*sfj4j%xukecxb0jae9lci&ysy=609hj@(l$47c'
-USE_I18N = False
+USE_I18N = True
+I18N_URLS = False
 HONEYPOT_FIELD_NAME = 'fonzie_kungfu'
 
 TEMPLATE_DIRS = (
@@ -27,6 +30,8 @@ TEMPLATE_DIRS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    #"django.middleware.csrf.CsrfViewMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.doc.XViewMiddleware',
     'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
@@ -85,7 +90,7 @@ INSTALLED_APPS = (
   'quoteme',
   'mingus.core',
   'debug_toolbar',
-  
+
   'django_twitter',
   'django_bitly',
   'staticfiles',
@@ -109,6 +114,7 @@ DJANGO_WYSIWYG_MEDIA_URL = STATIC_URL + "js/ckeditor/"
 DJANGO_WYSIWYG_FLAVOR = "ckeditor"
 
 try:
-   from local_settings import *
+    from local_settings import *
 except ImportError:
-   pass
+    sys.stderr.write('Unable to read local_settings.py\n')
+    sys.exit(1)

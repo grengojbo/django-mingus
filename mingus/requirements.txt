@@ -1,7 +1,7 @@
 BeautifulSoup>=3.0.8
 PIL
 python-dateutil==1.4.1
-django
+django==1.1.2
 django-debug-toolbar==0.8.1
 django-tagging==0.3
 Pygments==1.1.1
@@ -43,7 +43,7 @@ django-robots==0.6.1
 django-dbtemplates==0.6.1
 django-memcache-status==1.0.1
 -e git+git://github.com/kylef/django-request.git#egg=django-request
-
+-e git+git://github.com/simplegeo/python-oauth2.git#egg=oauth2
 
 
 
