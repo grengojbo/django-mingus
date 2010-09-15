@@ -8,3 +8,6 @@ mingus/media/uploads/
 mingus/media/photos/
 django_mingus.egg-info
 mingus/media/CACHE/
+mingus/media/admin/
+build/
+src/
